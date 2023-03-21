@@ -14,7 +14,7 @@ class SendReceiveEventHandler(object):
             event(message, *args, **kwargs)
 
 
-class SendAndReceiveMessageEvent(object):
+class SendReceiveMessageEvent(object):
     def __init__(self):
         self.OnMessageSendReceive = SendReceiveEventHandler()
 
@@ -22,9 +22,9 @@ class SendAndReceiveMessageEvent(object):
     def on_message_event(self, message, *args, **kwargs):
         self.OnMessageSendReceive(message, *args, **kwargs)
 
-    def register_on_message_send_event(self, method_to_run):
+    def register_on_message_event(self, method_to_run):
         self.OnMessageSendReceive += method_to_run
 
-    def unregister_on_message_send_event(self, method_to_remove):
+    def unregister_on_message_event(self, method_to_remove):
         self.OnMessageSendReceive -= method_to_remove
 

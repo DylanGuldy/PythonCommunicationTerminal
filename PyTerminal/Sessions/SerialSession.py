@@ -3,21 +3,34 @@ from tkinter import Tk
 from tkinter import scrolledtext
 import serial
 import socket
-from SendReceiveEventHandler import SendAndReceiveMessageEvent
+from PyTerminal.Events.SendReceiveEventHandler import SendReceiveMessageEvent
 
 
 class SerialSession:
+    @property
+    def scripts(self):
+        return self.__scripts
+
+    @scripts.setter
+    def scripts(self, value):
+        self.__scripts = value
+
+    @scripts.getter
+    def scripts(self):
+        return self.__scripts
+
     def __init__(self, parent: Tk, connection_info: dict, scripts: list, **kwargs):
         self.frame = Tk.frame(parent)
         self.connection_info = connection_info
         # This is where we'd make a serial session IF I HAD ONE
-        #self.connection = serial.Serial(connection_info)
-        self.scripts = scripts
+        # self.connection = serial.Serial(connection_info)
+        self.__scripts = scripts
 
         # For anything that wants to sub to when we get an event
-        self.ReceiveMessageEvent = SendAndReceiveMessageEvent()
+        self.ReceiveMessageEvent = SendReceiveMessageEvent()
 
-        self.session_text = scrolledtext.ScrolledText(self.frame).pack()
+        self.session_text = scrolledtext.ScrolledText(self.frame)
+        self.session_text.pack()
         self.session_text.config(state="disabled")
 
     # Threaded out to just listen for messages
@@ -45,4 +58,3 @@ class SerialSession:
         self.session_text.insert('end', message)
         self.session_text.yview('end')
         self.session_text.config(state='disabled')
-
