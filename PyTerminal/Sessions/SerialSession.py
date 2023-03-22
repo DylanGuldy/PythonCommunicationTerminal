@@ -1,6 +1,7 @@
 import tkinter
 from tkinter import Tk
 from tkinter import scrolledtext
+from tkinter import Frame
 import serial
 import socket
 from PyTerminal.Events.SendReceiveEventHandler import SendReceiveMessageEvent
@@ -20,7 +21,8 @@ class SerialSession:
         return self.__scripts
 
     def __init__(self, parent: Tk, connection_info: dict, scripts: list, **kwargs):
-        self.frame = Tk.frame(parent)
+        self.frame = Frame(parent)
+
         self.connection_info = connection_info
         # This is where we'd make a serial session IF I HAD ONE
         # self.connection = serial.Serial(connection_info)
@@ -33,6 +35,14 @@ class SerialSession:
         self.session_text.pack()
         self.session_text.config(state="disabled")
 
+    def add_script(self, new_script):
+        # TODO: I think scripts might need reflection or something
+        #  Want to be able to pull in any ol' py script to operate on sessions
+        self.__scripts.append(new_script)
+
+    def del_script(self, del_script):
+        self.__scripts.remove(del_script)
+
     # Threaded out to just listen for messages
     def listen_for_messages(self):
         pass
@@ -40,6 +50,11 @@ class SerialSession:
         ##message_bytes = self.connection.read_until(self.connection_info["termination_char"])
         ##self.on_message_receive_event(message_bytes.decode('utf-8'))
 
+    ##########################
+    # Message Receive events
+    #   TODO: Maybe break this out into
+    #       a class for reuse in eth session?
+    ##########################
     def on_message_send_subscriber(self, message, *args, **kwargs):
         self._append_message_to_text_area(message)
 
@@ -53,6 +68,9 @@ class SerialSession:
     def unregister_message_receive_event_subscriber(self, method_to_remove):
         self.ReceiveMessageEvent -= method_to_remove
 
+    ##########################
+    # Private methods
+    ##########################
     def _append_message_to_text_area(self, message):
         self.session_text.config(state='normal')
         self.session_text.insert('end', message)
