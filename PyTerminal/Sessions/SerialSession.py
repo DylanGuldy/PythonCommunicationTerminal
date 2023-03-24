@@ -21,7 +21,8 @@ class SerialSession:
         return self.__scripts
 
     def __init__(self, parent: Tk, connection_info: dict, scripts: list, **kwargs):
-        self.frame = Frame(parent)
+        # Will hold the window for this class
+        self.frame = Frame()
 
         self.connection_info = connection_info
         # This is where we'd make a serial session IF I HAD ONE
@@ -34,6 +35,9 @@ class SerialSession:
         self.session_text = scrolledtext.ScrolledText(self.frame)
         self.session_text.pack()
         self.session_text.config(state="disabled")
+
+    def create_window(self, parent_window):
+        self.frame = Frame(parent_window)
 
     def add_script(self, new_script):
         # TODO: I think scripts might need reflection or something
