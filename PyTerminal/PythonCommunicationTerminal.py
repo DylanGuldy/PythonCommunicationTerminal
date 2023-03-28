@@ -17,6 +17,7 @@ class ChatWindow(tkinter.Toplevel):
     def run(self):
         self.master.mainloop()
 
+
 def main():
     root = TK.Tk()
     root.resizable(True, True)

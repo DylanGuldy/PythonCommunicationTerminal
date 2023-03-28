@@ -1,6 +1,8 @@
+venv
 env
 env1
 PythonTerminalEnv
+.idea
 *.egg-info
 *.pyproj
 *.swp
