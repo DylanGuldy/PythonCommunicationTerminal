@@ -1,0 +1,17 @@
+
+    # Serial / Eth
+    # Serial data:
+    # PORT=COM1                     - Port to connect to /dev/ttys1 or COM(N)
+    # BAUD=9600                     - Baud rate, common ones are 4800, 9600, 19200, 38400, 57600, 115200
+    # DATA_BITS=8                   - Number of data bits, options are 5, 6, 7 and 8. 8 is the most common
+    # PARITY=NONE                   - Parity error checking, options are none, odd, even, mark, and space
+    # STOP_BITS=1                   - Number of stop bits, options are one 1.5 and 2
+    # TIME_OUT=NONE                 - Read timeout in seconds, None will wait forever
+    # XONXOFF=FALSE                 - Software flow control
+    # RTSCTS=FALSE                  - Hardware flow control (RTS/CTS)
+    # WRITE_TIMEOUT=NONE            - Write timeout in seconds, None will wait forever
+    # DSRDTR=FALSE                  - Hardware flow control (DSR/DTR)
+    # INTER_BYTE_TIMEOUT=NONE       - Inter character timeout in seconds, None disables this
+    # EXCLUSIVE=NONE                - Sets exclusive access mode POSIX only
+    # For more infor on serial options go to https://pyserial.readthedocs.io/en/latest/pyserial_api.html
+    # scripts: list of script paths

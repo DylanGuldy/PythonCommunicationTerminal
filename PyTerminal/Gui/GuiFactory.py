@@ -1,14 +1,14 @@
 from PyTerminal.Sessions import SerialSession
 from PyTerminal.Gui.SessionWindow import SessionsWindow
 
+
 class PyTerminalFactory(object):
-    def __init__(self):
+    def __init__(self, config=None):
         self.session_window = None
         self.sessions = []
-
         pass
 
-    def create_session_window(self, main_window):
+    def create_session_window(self, main_window, config):
         self.session_window = SessionsWindow(main_window)
 
     def create_sessions(self, session_window, config_file=None):

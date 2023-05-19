@@ -25,7 +25,6 @@ def main():
     chatWindow = ChatWindow(root)
 
 
-
 if __name__ == "__main__":
     #main()
     print(sys.version)

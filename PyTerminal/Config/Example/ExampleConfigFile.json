@@ -1,0 +1,34 @@
+{
+    "Sessions":
+    [
+        {
+        "Serial":
+        {
+        "Name": "Example Serial Session 0",
+        "Communication_Port": "COM1",
+        "Baud_Rate": 9600,
+        "Data_Bits": 8,
+        "Parity": "None",
+        "Stop_Bits": 1,
+        "Time_Out": null,
+        "Xon_Xoff": false,
+        "Rts_Cts": false,
+        "Write_Timeout": null,
+        "Dsr_Dtr": false,
+        "Inter_Byte_Timeout": null,
+        "Exclusive": null,
+        "Termination_Char": "\n"
+        }
+        }
+    ],
+   "Scripts":[
+    {
+        "Location": "$HOME//Programming//Python//PythonCommunicationTerminal//PyTerminal//Scripts//Example//ExampleScript.py",
+        "ClassName": "TestClass",
+        "Sessions": [
+            "Example Serial Session 0"
+        ],
+        "Color": "0x00FF00"
+    }
+    ]
+}

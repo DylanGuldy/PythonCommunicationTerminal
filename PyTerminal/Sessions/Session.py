@@ -5,25 +5,27 @@ from PyTerminal.Events.SendReceiveEventHandler import SendReceiveMessageEvent
 
 
 class Session(object):
+
     @property
-    def scripts(self):
-        return self.__scripts
+    def name(self):
+        return self.__name
 
-    @scripts.setter
-    def scripts(self, value):
-        self.__scripts = value
+    @name.setter
+    def name(self, value):
+        self.__name = value
 
-    @scripts.getter
-    def scripts(self):
-        return self.__scripts
+    @name.getter
+    def name(self):
+        return self.__name
 
-    def __init__(self, parent: Tk, scripts: list, **kwargs):
+    def __init__(self, name, parent_tk: Tk, **kwargs):
         # Will hold the window for this class
         self.frame = Frame()
 
         # This is where we'd make a serial session IF I HAD ONE
         # self.connection = serial.Serial(connection_info)
-        self.__scripts = scripts
+
+        self.__name = name
 
         # For anything that wants to sub to when we get an event
         self.ReceiveMessageEvent = SendReceiveMessageEvent()
